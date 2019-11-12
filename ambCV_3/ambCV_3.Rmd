@@ -1,0 +1,95 @@
+---
+name: Allie Burns
+position: "Doctoral Assistant"
+address: "Brain Mind Institute, École polytechnique fédérale de Lausanne, Lausanne, Switzerland"
+phone: +41 78 65 76694
+profilepic: "brain.png"
+email: "allieburns12@gmail.com"
+twitter: imallieburns
+github: allie-burns
+date: "`r format(Sys.time(), '%B %Y')`"
+output: vitae::awesomecv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+library(rorcid)
+library(tinytex)
+```
+
+# Personal Profile
+A doctoral student using both bioinformatic analysis and molecular techniques in order to learn more about the epigenetic mechanisms of memory formation. Webmaster for the Association of Doctoral Students in Life Sciences at EPFL. Established an internal mentoring system to help ease the transition of new students into their PhD and life in Lausanne.
+
+
+# Education
+```{r education}
+edu <- rorcid::orcid_educations("0000-0001-7153-3160")
+edu$`0000-0001-7153-3160`$`education-summary` %>% 
+  detailed_entries(
+    what = paste(`role-title`,`department-name`,sep=", "), 
+    when = glue::glue("{`start-date.year.value`} - {`end-date.year.value`}"), 
+    with = organization.name#,
+    ##where = organization.address.city
+  )
+```
+
+# Experience
+```{r experience}
+tibble::tribble(
+  ~title, ~location, ~advisor, ~start.year, ~end.year, ~city,
+  "Doctoral Assistant", 
+  "Ècole Polytechnique Fédérale de Lausanne, Lausanne, Switzerland", 
+  "Advisor: Johannes Gräff", 
+  2016,
+  "curr.",
+  "Project: Testing the theory of Epigenetic Priming in Fear Memory Conditioning",
+  "Bioinformatician/Research Technician", 
+  "Stowers Institute for Medical Research, Kansas City, Missouri, USA", 
+  "Advisor: Peter Baumann", 
+  2013,
+  2016,
+  "Project: Effects of the splicing inhibitor, Isoginkgetin, on human Telomerase RNA",
+  "Undergraduate Researcher", 
+  "University of Oregon, Eugene, Oregon, USA", 
+  "Advisors: William E. Bradshaw and Christina M. Holzapfel", 
+  2010,
+  2012,
+  "Project: Evolutionary genetics of geographical variation, seasonal development and
+circadian timing in the North American mosquito species, Wyeomyia smithii"
+) %>% 
+  detailed_entries(
+    what = title,
+    when = glue::glue("{`start.year`} - {`end.year`}"),
+    with = location,
+    where = advisor,
+    why = city
+  )
+```
+
+# Publications
+```{r publications}
+scholar::get_publications("Ilhxa50AAAAJ&hl") %>% 
+  detailed_entries(
+    what = title,
+    when = year,
+    with = author,
+    where = journal
+  )
+```
+
+# Skills and Techniques
+```{r skills}
+tibble::tribble(
+  ~title, ~location, ~advisor, ~start.year, ~end.year, ~city,
+) %>% 
+  detailed_entries(
+    what = title,
+    when = glue::glue("{`start.year`} - {`end.year`}"),
+    with = location,
+    where = advisor,
+    why = city
+  )
+```
+
+# Extracurricular Activities

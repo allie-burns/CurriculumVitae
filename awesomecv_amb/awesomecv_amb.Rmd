@@ -1,0 +1,114 @@
+---
+name: Allison Burns
+position: "Doctoral Assistant • Webmaster for the PhD Association "
+address: "Brain Mind Institute, École polytechnique fédérale de Lausanne, Lausanne, Switzerland"
+phone: +41 78 65 76694
+profilepic: "brain2.png"
+email: "allieburns12@gmail.com"
+twitter: imallieburns
+github: allie-burns
+##linkedin: mariecurie
+date: "`r format(Sys.time(), '%B %Y')`"
+output: vitae::awesomecv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+library(readxl)
+```
+
+
+# Summary
+Graduate student using both bioinformatic analysis and molecular techniques in order to learn more about the epigenetic mechanisms of memory formation. Webmaster for the Association of Doctoral Students in Life Sciences at EPFL. Established a student-run mentoring system to help ease the transition of new students into their PhD and life in Lausanne.  Frequently attends R-Ladies Lausanne meetings to discuss writing, testing and teaching R code.
+
+
+
+# Education
+```{r education}
+## Setup Education Table
+edu <- rorcid::orcid_educations("0000-0001-7153-3160")
+edu$`0000-0001-7153-3160`$`education-summary`$`end-date.year.value` <- c("In Progress","2013","2012")
+edu$`0000-0001-7153-3160`$`education-summary`$thesis <- c("Testing the theory of Epigenetic Priming in Fear Memory Conditioning",
+                                                          "Effects of the splicing inhibitor, Isoginkgetin, on human Telomerase RNA",
+                                                          "")
+edu$`0000-0001-7153-3160`$`education-summary`$organization.address.country <- c("Switzerland","USA","USA")
+edu$`0000-0001-7153-3160`$`education-summary`$organization.address.region <- c("","Oregon","Oregon")
+
+edu$`0000-0001-7153-3160`$`education-summary` %>% 
+  detailed_entries(
+    what = paste(`role-title`, "in", `department-name`,sep=" "),
+    when = glue::glue("{`end-date.year.value`}"), 
+    with = organization.name,
+    where = paste(organization.address.city,
+                  organization.address.region, 
+                  organization.address.country,
+                  sep=", "),
+    why = paste("Project: ", thesis)
+  )
+```
+
+
+
+
+# Experience
+```{r experience}
+experience <- read_excel("./CVdata.xlsx",sheet = "Experience")
+experience %>% 
+  detailed_entries(
+    what = paste(Title, " in the lab of ", advisor, sep=""),
+    when = glue::glue("{start} - {end}"),
+    with = Institute,
+    where = paste(city, country, sep=", "),
+    why = Responsiblities
+  )
+```
+
+
+
+# Publications 
+ 1. Silva BA, **Burns AM**, Gräff J. (2019) A cFos activation map of remote fear memory attenuation. Psychopharmacology. https://doi.org/10.1007/s00213-018-5000-y.
+ 
+ 2. Tseng CK, Wang HF, **Burns AM**, Schroeder MR, Gaspari M, Baumann A. (2015) Human telomerase RNA processing and quality control. Cell Reports. http://doi.org/10.1016/j.celrep.2015.10.075.
+
+
+# Teaching and Supervising
+```{r teaching}
+teaching <- read_excel("./CVdata.xlsx",sheet = "Teaching")
+teaching %>% 
+  brief_entries(
+    what = paste(Course, Location, sep=", "),
+    with = Date
+  )
+```
+
+
+# Extracurricular Experience
+```{r extracurriculars}
+extracurriculars <- read_excel("./CVdata.xlsx",sheet = "Extracurriculars")
+extracurriculars %>% 
+  brief_entries(
+    what = paste(Association, Role , sep=", "),
+    with = Date
+  )
+```
+
+# Skills
+**Laboratory Techniques: ** Single Nuclei RNA-sequencing preparation, Bulk RNA-sequencing preparation, ChIP-sequencing preparation, Cell culture, Western blotting, PCR, Cloning, Animal maintanance (mosquitoes and mice) and experimentation.  
+**Computational Techniques: ** Bash(intermediate); R(advanced); Python(beginner); HTML(beginner); Web design; Version Control(Git); Data wrangling; Data visualization; Statistical analysis   
+**Bioinformatic Analysis: ** Sequencing alignments(STAR and Tophat); Sequencing quality control; Bulk RNA-seq analysis; Single-cell sequencing analysis; Cell trajectory analysis; ChIP-seq analysis; Photometry and electrophysiology analysis.   
+**Communication: ** Presented research talks at 4 internal symposia and 3 posters at international conferences; Taught second year bachelor students basic molecular techniques in an integrated lab course; Mentored three bachelor students for projects involving computational and laboratory skills.  
+**Leadership: ** Boardmember of the Association of Doctoral Students in Life Sciences (ADSV) at EPFL; Established a student-run mentoring system to help ease the transition of new students into their PhD and life in Lausanne.
+
+
+
+# References
+```{r references}
+references <- read_excel("./CVdata.xlsx",sheet = "References")
+references %>% 
+  detailed_entries(
+    what = Address,
+    with = Name,
+    where = Email
+  )
+```
