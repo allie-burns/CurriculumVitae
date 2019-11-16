@@ -19,7 +19,7 @@ library(tinytex)
 ```
 
 # Personal Profile
-A doctoral student using both bioinformatic analysis and molecular techniques in order to learn more about the epigenetic mechanisms of memory formation. Webmaster for the Association of Doctoral Students in Life Sciences at EPFL. Established an internal mentoring system to help ease the transition of new students into their PhD and life in Lausanne.
+Doctoral student using both bioinformatic analysis and molecular techniques to learn more about the epigenetic mechanisms of memory formation. Webmaster for the Association of Doctoral Students in Life Sciences at EPFL and the Pint of Science Festival in Switzerland . Established an internal mentoring system to help ease the transition of new students into their PhD and life in Lausanne.
 
 
 # Education
